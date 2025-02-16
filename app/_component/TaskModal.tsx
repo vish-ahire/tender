@@ -5,16 +5,11 @@ interface TaskModalProps {
     isOpen: boolean;
     type: "add" | "view";
     task?: Task;
-    newTask?: {
-        title: string;
-        description: string;
-        assignee: string;
-        priority: "Low" | "Medium" | "High";
-        dueDate: string;
-    };
+    
+    newTask?: Omit<Task, "id" | "status">;
     onClose: () => void;
     onSave?: () => void;
-    setNewTask?: (task: any) => void;
+    setNewTask?: (task: Omit<Task, "id" | "status">) => void;
 }
 
 const TaskModal: React.FC<TaskModalProps> = ({
@@ -50,18 +45,18 @@ const TaskModal: React.FC<TaskModalProps> = ({
                 <h2 className="text-white text-xl font-bold mb-4">{type === "add" ? "Add New Task" : "Task Details"}</h2>
 
                 {type === "add" && newTask && setNewTask ? (
-                    <>  
+                    <>
                         <input
                             type="text"
                             placeholder="Task Title"
                             value={newTask.title}
-                            onChange={(e) => setNewTask({ ...newTask, title: e.target.value })}
+                            onChange={(e: React.ChangeEvent<HTMLInputElement>) => setNewTask({ ...newTask, title: e.target.value })}
                             className="w-full bg-[#333] text-white p-2 rounded mb-2 focus:outline-none"
                         />
                         <textarea
                             placeholder="Task Description"
                             value={newTask.description}
-                            onChange={(e) =>
+                            onChange={(e: React.ChangeEvent<HTMLTextAreaElement>) =>
                                 setNewTask({ ...newTask, description: e.target.value })
                             }
                             className="w-full bg-[#333] text-white p-2 rounded mb-2 focus:outline-none"
@@ -70,16 +65,16 @@ const TaskModal: React.FC<TaskModalProps> = ({
                             type="text"
                             placeholder="Assignee"
                             value={newTask.assignee}
-                            onChange={(e) =>
+                            onChange={(e: React.ChangeEvent<HTMLInputElement>) =>
                                 setNewTask({ ...newTask, assignee: e.target.value })
-                            }
+                              }
                             className="w-full bg-[#333] text-white p-2 rounded mb-2 focus:outline-none"
                         />
                         <select
                             value={newTask.priority}
-                            onChange={(e) =>
+                            onChange={(e: React.ChangeEvent<HTMLSelectElement>) =>
                                 setNewTask({ ...newTask, priority: e.target.value as Task["priority"] })
-                            }
+                              }
                             className="w-full bg-[#333] text-white p-2 rounded mb-2 focus:outline-none"
                         >
                             <option value="Low">Low</option>
@@ -89,48 +84,48 @@ const TaskModal: React.FC<TaskModalProps> = ({
                         <input
                             type="date"
                             value={newTask.dueDate}
-                            onChange={(e) =>
+                            onChange={(e: React.ChangeEvent<HTMLInputElement>) =>
                                 setNewTask({ ...newTask, dueDate: e.target.value })
-                            }
+                              }
                             className="w-full bg-[#333] text-white p-2 rounded mb-2 focus:outline-none"
                         />
                     </>
                 ) :
-                task && (
-                    <div className="bg-[#2A2A2A] p-4 rounded-lg text-white">
-                      <h3 className="text-lg font-semibold text-center mb-3">{task.title}</h3>
-                      <div className="grid grid-cols-2 gap-3">
-                        <p className="text-gray-400">📌 <span className="text-white font-medium">Description:</span></p>
-                        <p className="text-gray-300">{task.description}</p>
-                  
-                        <p className="text-gray-400">👤 <span className="text-white font-medium">Assignee:</span></p>
-                        <p className="text-gray-300">{task.assignee}</p>
-                  
-                        <p className="text-gray-400">⚡ <span className="text-white font-medium">Priority:</span></p>
-                        <p className={`font-medium ${task.priority === "High" ? "text-red-500" : task.priority === "Medium" ? "text-yellow-500" : "text-green-500"}`}>
-                          {task.priority}
-                        </p>
-                  
-                        <p className="text-gray-400">📅 <span className="text-white font-medium">Due Date:</span></p>
-                        <p className="text-gray-300">{task.dueDate}</p>
-                  
-                        <p className="text-gray-400">🚀 <span className="text-white font-medium">Status:</span></p>
-                        <p className="text-gray-300">{task.status}</p>
-                      </div>
-                    </div>
-                  ) 
-                // (
-                //     task && (
-                //         <div className="text-white space-y-2">
-                //             <p><strong>Title:</strong> {task.title}</p>
-                //             <p><strong>Description:</strong> {task.description}</p>
-                //             <p><strong>Assignee:</strong> {task.assignee}</p>
-                //             <p><strong>Priority:</strong> {task.priority}</p>
-                //             <p><strong>Due Date:</strong> {task.dueDate}</p>
-                //             <p><strong>Status:</strong> {task.status}</p>
-                //         </div>
-                //     )
-                // )
+                    task && (
+                        <div className="bg-[#2A2A2A] p-4 rounded-lg text-white">
+                            <h3 className="text-lg font-semibold text-center mb-3">{task.title}</h3>
+                            <div className="grid grid-cols-2 gap-3">
+                                <p className="text-gray-400">📌 <span className="text-white font-medium">Description:</span></p>
+                                <p className="text-gray-300">{task.description}</p>
+
+                                <p className="text-gray-400">👤 <span className="text-white font-medium">Assignee:</span></p>
+                                <p className="text-gray-300">{task.assignee}</p>
+
+                                <p className="text-gray-400">⚡ <span className="text-white font-medium">Priority:</span></p>
+                                <p className={`font-medium ${task.priority === "High" ? "text-red-500" : task.priority === "Medium" ? "text-yellow-500" : "text-green-500"}`}>
+                                    {task.priority}
+                                </p>
+
+                                <p className="text-gray-400">📅 <span className="text-white font-medium">Due Date:</span></p>
+                                <p className="text-gray-300">{task.dueDate}</p>
+
+                                <p className="text-gray-400">🚀 <span className="text-white font-medium">Status:</span></p>
+                                <p className="text-gray-300">{task.status}</p>
+                            </div>
+                        </div>
+                    )
+                    // (
+                    //     task && (
+                    //         <div className="text-white space-y-2">
+                    //             <p><strong>Title:</strong> {task.title}</p>
+                    //             <p><strong>Description:</strong> {task.description}</p>
+                    //             <p><strong>Assignee:</strong> {task.assignee}</p>
+                    //             <p><strong>Priority:</strong> {task.priority}</p>
+                    //             <p><strong>Due Date:</strong> {task.dueDate}</p>
+                    //             <p><strong>Status:</strong> {task.status}</p>
+                    //         </div>
+                    //     )
+                    // )
                 }
 
                 <div className="flex justify-end space-x-3 mt-4">

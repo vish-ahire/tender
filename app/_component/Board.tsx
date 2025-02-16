@@ -7,7 +7,7 @@ import { columnsData, Task } from "../../data/columnsData";
 const BoardView: React.FC = () => {
   const [columns, setColumns] = useState(columnsData);
 
-  const handleAddTask = (columnId: string, newTask: any) => {
+  const handleAddTask = (columnId: string, newTask: Task) => {
     setColumns((prevColumns) =>
       prevColumns.map((col) =>
         col.id === columnId ? { ...col, tasks: [...col.tasks, newTask] } : col
@@ -20,12 +20,12 @@ const BoardView: React.FC = () => {
     e.dataTransfer.setData("sourceColumnId", sourceColumnId);
   };
   //DND Over
-  const handleDragOver = (e: React.DragEvent) => {
-    e.preventDefault();
-  };
+  // const handleDragOver = (e: React.DragEvent<HTMLDivElement>) => {
+  //   e.preventDefault();
+  // };
 
   //DND Drop
-  const handleDrop = (e: React.DragEvent, targetColumnId: string) => {
+  const handleDrop = (e: React.DragEvent<HTMLDivElement>, targetColumnId: string) => {
     e.preventDefault();
 
     const taskId = e.dataTransfer.getData("taskId");
