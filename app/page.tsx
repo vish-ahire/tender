@@ -3,6 +3,7 @@ import { useState } from "react";
 import { FiSearch, FiList, FiGrid } from "react-icons/fi";
 import { FaRegBell } from "react-icons/fa";
 import BoardView from "./_component/Board";
+import ListView from "./_component/ListView";
 
 export default function Home() {
   const [view, setView] =  useState<"list" | "board">("board");
@@ -57,7 +58,7 @@ export default function Home() {
           </button>
         </div>
       </div>
-      <div className="mt-6">{view === "board" ? <BoardView /> : ""}</div>
+      <div className="mt-6">{view === "board" ? <BoardView /> : <ListView />}</div>
     </div>
   );
 }

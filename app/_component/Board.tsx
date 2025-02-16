@@ -25,3 +25,5 @@ const BoardView: React.FC = () => {
 };
 
 export default BoardView;
+
+

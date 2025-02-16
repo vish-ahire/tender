@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React from 'react';
 import { FaRegCommentAlt } from "react-icons/fa";
 import { GrAttachment } from "react-icons/gr";
 import { Task } from '@/data/columnsData';
