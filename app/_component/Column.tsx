@@ -50,7 +50,8 @@ const Column: React.FC<ColumnProps> = ({ column, onDragStart, onDrop, onAddTask 
 
 
   return (
-    <div className="w-1/3 md:w-2/3 bg-[#000000] p-4 rounded-lg shadow-lg min-h-0 "
+    <div className="w-full bg-[#000000] p-4 rounded-lg shadow-lg min-h-0 "
+
       onDragOver={(e) => e.preventDefault()}
       onDrop={(e) => onDrop(e, column.id)}
     >

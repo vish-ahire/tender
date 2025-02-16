@@ -11,7 +11,7 @@ export default function Home() {
   return (
     <div className="min-h-screen w-full bg-[#2e2f35] text-white p-6 overflow-x-hidden">
       {/* Header */}
-      <div className="bg-[#2e2f35] rounded-t-2xl p-4 flex flex-col md:flex-row justify-between items-center ">
+      <div className="bg-[#2e2f35] rounded-t-2xl p-2 flex flex-col md:flex-row justify-between items-center ">
         <h1 className="text-xl font-semibold mb-3 md:mb-0 md:text-3xl">Tender Tasks</h1>
 
         {/* Search Bar */}
@@ -19,14 +19,14 @@ export default function Home() {
           <input
             type="text"
             placeholder="Search for Tenders"
-            className="w-full bg-[#000000] text-white px-4 py-2 rounded-full focus:outline-none"
+            className="w-full bg-[#000000] text-white px-4 py-1 rounded-full focus:outline-none"
           />
-          <FiSearch className="absolute right-12 top-3 text-gray-400" size={18} />
+          <FiSearch className="absolute right-12 top-2 text-gray-400" size={18} />
           <FaRegBell className="ml-4 hidden md:block cursor-pointer" size={20} />
         </div>
       </div>
 
-      <hr className="my-4 " />
+      <hr className="my-3 " />
 
       {/* Menu Bar */}
       <div className="flex flex-col md:flex-row justify-between bg-[#1E1E1E] p-4 rounded-full items-center gap-4

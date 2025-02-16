@@ -23,10 +23,10 @@ const Card: React.FC<CardProps> = ({ task }) => {
 
     return (
         <div className="bg-[#2e2f35] p-4 rounded-lg shadow-md 
-    transition-all duration-300 ease-in-out 
+                transition-all duration-300 ease-in-out 
                 hover:shadow-[0_0_15px_rgba(255,255,255,0.6)] hover:scale-[1.02] 
-                hover:ring-2 hover:ring-white"
-
+                hover:ring-2 hover:ring-white w-full"
+            
         >
             {/* Status Label */}
             <span className={`text-sm font-medium ${statusColors[task.status]}`}>
