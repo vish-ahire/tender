@@ -1,36 +1,91 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# Tender Task Board
 
-## Getting Started
+A **dark-themed task board** built with **Next.js, TypeScript, and local state management**. This project includes **task columns, interactive animations & drag-and-drop (DND) functionality**.
 
-First, run the development server:
+## 🚀 Features
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
+- **Next.js & TypeScript** for a scalable and robust frontend.
+- **Local State Management** to handle task data efficiently.
+- **Drag & Drop Support** for seamless task movement.
+- **Interactive UI** with smooth animations.
+- **Dark Theme** for an elegant look.
+
+
+## 🏗 Tech Stack
+
+- **Next.js** (App Router)
+- **TypeScript**
+- **React.js**
+- **Tailwind CSS**
+- **React Icons**
+
+## 📂 Folder Structure
+
+```
+/project-root
+│── app/
+│   ├── _components/       # UI components
+│   ├── tasks/             # Tasks page
+│   ├── tenders/           # Tenders page
+│   ├── settings/          # Settings page
+│── public/                # Static assets
+│── data/                  # Task & column data
+│── styles/                # Global styles
+│── README.md              # Project documentation
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+## 🛠 Installation
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+1. **Clone the Repository:**
+   ```sh
+   git clone https://github.com/vish-ahire/tender.git
+   cd tender
+   ```
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+2. **Install Dependencies:**
+   ```sh
+   npm install  # or yarn install
+   ```
 
-## Learn More
+3. **Run the Project:**
+   ```sh
+   npm run dev  # or yarn dev
+   ```
 
-To learn more about Next.js, take a look at the following resources:
+4. Open [http://localhost:3000](http://localhost:3000) in your browser.
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+## ✨ Usage
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+- **Add Tasks** by clicking on the "+" button.
+- **Drag & Drop** tasks between different columns.
+- **View Tasks** by clicking on a task card.
+- **Manage Columns** dynamically.
 
-## Deploy on Vercel
+## 🌐 Deployment
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+This project is deployed on **Netlify**.
+```sh
+https://tender-task.netlify.app/
+```
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+## 🤝 Contributing
+
+1. **Fork the repository**.
+2. **Create a feature branch:**
+   ```sh
+   git checkout -b feature-name
+   ```
+3. **Commit your changes:**
+   ```sh
+   git commit -m "Add new feature"
+   ```
+4. **Push to GitHub and create a Pull Request.**
+
+## 📜 License
+
+This project is licensed under the **MIT License**.
+
+---
+
+🎯 *Built with ❤️ by [Pranav Ahire](mailto:pranavahire11234@gmail.com).*
+
