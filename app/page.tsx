@@ -2,9 +2,10 @@
 import { useState } from "react";
 import { FiSearch, FiList, FiGrid } from "react-icons/fi";
 import { FaRegBell } from "react-icons/fa";
+import BoardView from "./_component/Board";
 
 export default function Home() {
-  const [view, setView] = useState<"list" | "board">("board");
+  const [view, setView] =  useState<"list" | "board">("board");
 
   return (
     <div className="min-h-screen w-full bg-[#2e2f35] text-white p-6">
@@ -56,6 +57,7 @@ export default function Home() {
           </button>
         </div>
       </div>
+      <div className="mt-6">{view === "board" ? <BoardView /> : ""}</div>
     </div>
   );
 }
