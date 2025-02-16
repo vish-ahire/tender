@@ -30,7 +30,10 @@ const Card: React.FC<CardProps> = ({ task }) => {
   };
 
   return (
-    <div className="bg-[#2e2f35] p-4 rounded-lg shadow-md">
+    <div className="bg-[#2e2f35] p-4 rounded-lg shadow-md 
+    transition-all duration-300 ease-in-out 
+                hover:shadow-[0_0_15px_rgba(255,255,255,0.6)] hover:scale-[1.02] 
+                hover:ring-2 hover:ring-white">
       {/* Status Label */}
       <span className={`text-sm font-medium ${statusColors[task.status]}`}>
         {task.status}
@@ -39,7 +42,7 @@ const Card: React.FC<CardProps> = ({ task }) => {
       {/* Task Details */}
       <h3 className="text-white font-semibold">{task.title}</h3>
       <p className="text-gray-400 text-sm line-clamp-1">{task.description}</p>
-
+      <p className="text-gray-50 text-xs">{task.assignee}</p>
       {/* Footer */}
       <div className="flex justify-between items-center mt-3">
         <span className="text-xs text-gray-400">📅 {task.dueDate}</span>
