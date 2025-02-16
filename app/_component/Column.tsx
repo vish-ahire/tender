@@ -12,8 +12,11 @@ interface ColumnProps {
     tasks: Task[];
   };
   onAddTask: (columnId: string, newTask: Task) => void;
+  onDragStart: (e: React.DragEvent<HTMLDivElement>, taskId: string, sourceColumnId: string) => void;
+  onDrop: (e: React.DragEvent<HTMLDivElement>, targetColumnId: string) => void;
+
 }
-const Column: React.FC<ColumnProps> = ({ column, onAddTask }) => {
+const Column: React.FC<ColumnProps> = ({ column, onDragStart, onDrop, onAddTask }) => {
   const [showModal, setShowModal] = useState(false);
   const [modalType, setModalType] = useState<"add" | "view">("add");
   const [selectedTask, setSelectedTask] = useState<Task | undefined>(undefined);
@@ -47,7 +50,10 @@ const Column: React.FC<ColumnProps> = ({ column, onAddTask }) => {
 
 
   return (
-    <div className="w-1/3 bg-[#000000] p-4 rounded-lg shadow-lg min-h-0 ">
+    <div className="w-1/3 md:w-2/3 bg-[#000000] p-4 rounded-lg shadow-lg min-h-0 "
+      onDragOver={(e) => e.preventDefault()}
+      onDrop={(e) => onDrop(e, column.id)}
+    >
       {/* Column Header */}
       <div className="flex justify-between items-center border-b border-gray-700 pb-2 mb-4">
         <h2 className={`text-lg font-semibold ${column.color}`}>{column.title}
@@ -65,11 +71,14 @@ const Column: React.FC<ColumnProps> = ({ column, onAddTask }) => {
       {/* Task List */}
       <div className="space-y-4 ">
         {column.tasks.map((task) => (
-          <div key={task.id} onClick={() => {
-            setSelectedTask(task);
-            setModalType("view");
-            setShowModal(true);
-          }}>
+          <div key={task.id}
+            draggable
+            onDragStart={(e) => onDragStart(e, task.id, column.id)}
+            onClick={() => {
+              setSelectedTask(task);
+              setModalType("view");
+              setShowModal(true);
+            }}>
             <Card key={task.id} task={task} />
           </div>
 
@@ -84,7 +93,7 @@ const Column: React.FC<ColumnProps> = ({ column, onAddTask }) => {
         onSave={handleAddTask}
         setNewTask={setNewTask}
       />
-    </div>
+    </div >
   );
 };
 

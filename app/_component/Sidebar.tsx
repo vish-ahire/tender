@@ -12,12 +12,13 @@ const Sidebar = () => {
   return (
     <div
       className={
-        `h-screen bg-black text-white flex flex-col p-4 transition-all ${isOpen ? 'w-64' : 'w-20'}`
+        `h-screen bg-black text-white flex flex-col p-4 transition-all ${isOpen ? 'w-64' : 'w-20'}
+        `
       }
     >
       <div className="flex items-center justify-between mb-6">
         <h1 className={`text-xl font-bold ${!isOpen ? 'hidden' : ''}`}></h1>
-        <button onClick={() => setIsOpen(!isOpen)} className="p-2 text-white">
+        <button onClick={() => setIsOpen(!isOpen)} className="p-2 text-white focus:outline-none ">
           <FiMenu size={24} />
         </button>
       </div>
@@ -41,9 +42,9 @@ interface NavItemProps {
 
 const NavItem = ({ icon, label, isOpen }: NavItemProps) => {
   return (
-    <div className="flex items-center gap-4 p-3 rounded-lg cursor-pointer hover:bg-gray-700">
+    <div className="flex items-center gap-4 p-3 rounded-lg cursor-pointer hover:bg-gray-700 transition-all">
       {icon}
-      {isOpen && <span>{label}</span>}
+      {isOpen && <span className="whitespace-nowrap">{label}</span>}
     </div>
   );
 };

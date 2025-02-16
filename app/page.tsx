@@ -9,10 +9,10 @@ export default function Home() {
   const [view, setView] =  useState<"list" | "board">("board");
 
   return (
-    <div className="min-h-screen w-full bg-[#2e2f35] text-white p-6">
+    <div className="min-h-screen w-full bg-[#2e2f35] text-white p-6 overflow-x-hidden">
       {/* Header */}
       <div className="bg-[#2e2f35] rounded-t-2xl p-4 flex flex-col md:flex-row justify-between items-center ">
-        <h1 className="text-xl font-semibold mb-3 md:mb-0 md:text-4xl">Tender Tasks</h1>
+        <h1 className="text-xl font-semibold mb-3 md:mb-0 md:text-3xl">Tender Tasks</h1>
 
         {/* Search Bar */}
         <div className="flex items-center w-full md:w-96 relative">
@@ -26,22 +26,24 @@ export default function Home() {
         </div>
       </div>
 
-      <hr className="my-4" />
+      <hr className="my-4 " />
 
       {/* Menu Bar */}
-      <div className="flex flex-col md:flex-row justify-between bg-[#1E1E1E] p-4 rounded-full items-center">
-        <div className="flex w-full md:w-auto justify-center md:justify-start space-x-4">
+      <div className="flex flex-col md:flex-row justify-between bg-[#1E1E1E] p-4 rounded-full items-center gap-4
+                      md:rounded-full  ">
+        <div className="flex w-full md:w-auto justify-center md:justify-start space-x-4
+                        mb-3 md:mb-0">
           <button
-            className={`flex items-center px-4 py-2 rounded-lg ${
-              view === "list" ? "bg-yellow-500 text-black" : "bg-[#222]"
+            className={`flex items-center px-4 py-2 rounded-lg transition-all  ${
+              view === "list" ? "bg-yellow-500 text-black" : "bg-[#222] hover:bg-[#333]"
             }`}
             onClick={() => setView("list")}
           >
             <FiList className="mr-2" size={18} /> List View
           </button>
           <button
-            className={`flex items-center px-4 py-2 rounded-lg ${
-              view === "board" ? "bg-yellow-500 text-black" : "bg-[#222]"
+            className={`flex items-center px-4 py-2 rounded-lg transition-all  ${
+              view === "board" ? "bg-yellow-500 text-black" : "bg-[#222] hover:bg-[#333]"
             }`}
             onClick={() => setView("board")}
           >

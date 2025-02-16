@@ -30,8 +30,8 @@ export const columnsData: Column[] = [
         status: "Not Started",
       },
       {
-        id: "2",
-        title: "Construction Tender 2",
+        id: "5",
+        title: "Construction Tender 5",
         description: "Review contract terms and update requirements.",
         assignee: "Ram",
         priority: "High",
