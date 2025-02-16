@@ -2,12 +2,14 @@
 import { JSX, useState } from 'react';
 import { FiMenu, FiSettings } from 'react-icons/fi';
 import { SlGraph } from "react-icons/sl";
-import { IoCallOutline } from "react-icons/io5";
 import { PiMagnifyingGlassBold } from "react-icons/pi";
 import { FaTasks } from 'react-icons/fa';
+import Link from 'next/link';
+import { usePathname } from 'next/navigation';
 
 const Sidebar = () => {
   const [isOpen, setIsOpen] = useState(false);
+  const pathname = usePathname();
 
   return (
     <div
@@ -24,11 +26,10 @@ const Sidebar = () => {
       </div>
 
       <nav className="flex flex-col gap-6">
-        <NavItem icon={< PiMagnifyingGlassBold />} label="Dashboard" isOpen={isOpen} />
-        <NavItem icon={<FaTasks />} label="Tasks" isOpen={isOpen} />
-        <NavItem icon={<SlGraph />} label="Tenders" isOpen={isOpen} />
-        <NavItem icon={<IoCallOutline />} label="Tenders" isOpen={isOpen} />
-        <NavItem icon={<FiSettings />} label="Settings" isOpen={isOpen} />
+        <NavItem href="/" icon={< PiMagnifyingGlassBold />} label="Dashboard" isOpen={isOpen} active={pathname === '/'} />
+        <NavItem href="/tasks" icon={<FaTasks />} label="Tasks" isOpen={isOpen} active={pathname === '/tasks'} />
+        <NavItem href="/tenders" icon={<SlGraph />} label="Tenders" isOpen={isOpen} active={pathname === '/tenders'}/>
+        <NavItem href="/settings" icon={<FiSettings />} label="Settings" isOpen={isOpen} active={pathname === '/settings'} />
       </nav>
     </div>
   );
@@ -38,14 +39,18 @@ interface NavItemProps {
   icon: JSX.Element;
   label: string;
   isOpen: boolean;
+  href:string;
+  active: boolean;
 }
 
-const NavItem = ({ icon, label, isOpen }: NavItemProps) => {
+const NavItem = ({ icon, label, href, isOpen, active }: NavItemProps) => {
   return (
-    <div className="flex items-center gap-4 p-3 rounded-lg cursor-pointer hover:bg-gray-700 transition-all">
-      {icon}
-      {isOpen && <span className="whitespace-nowrap">{label}</span>}
-    </div>
+    <Link href={href}>
+      <div className={`flex items-center gap-4 p-3 rounded-lg cursor-pointer transition-all ${active ? 'bg-gray-700' : 'hover:bg-gray-700'}`}>
+        {icon}
+        {isOpen && <span className="whitespace-nowrap">{label}</span>}
+      </div>
+    </Link>
   );
 };
 
